@@ -1,6 +1,5 @@
 import { Page, Locator } from "@playwright/test";
 import { getProductById, toProductSlug } from '../data/products';
-import { ProductItem } from '../data/products';
 
 export class InventoryPage {
     readonly page: Page;
@@ -54,5 +53,9 @@ export class InventoryPage {
 
     async clickViewProduct(productId: number) {
         await this.viewProduct(productId).click();
+    }
+
+    async waitForPage() {
+        await this.page.waitForURL('**/inventory.html');
     }
 }

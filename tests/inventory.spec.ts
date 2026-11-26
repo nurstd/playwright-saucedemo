@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { baseUrl, authLogin } from '../data/auth';
-import { LoginPage } from '../pages/login.page';
+import { baseUrl } from '../data/auth';
 import { InventoryPage } from '../pages/inventory.page';
 import { CartPage } from '../pages/cart.page';
 import { ProductPage } from '../pages/product.page';
 import { getProductById, getSortedProducts } from '../data/products';
+import { loginStandardUser } from '../steps/auth.steps';
 
 test.describe('Inventory Test Suite', () => {
     let inventoryPage: InventoryPage;
@@ -13,10 +13,7 @@ test.describe('Inventory Test Suite', () => {
     const product = getProductById(4) // TODO: change to random product id
 
     test.beforeEach(async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.goto();
-        await loginPage.login(authLogin.standard_user, authLogin.password);
-        await expect(page).toHaveURL(`${baseUrl}inventory.html`);
+        await loginStandardUser(page);
 
         inventoryPage = new InventoryPage(page);
         cartPage = new CartPage(page);

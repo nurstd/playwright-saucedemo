@@ -17,7 +17,7 @@ test.describe('Authentication Test Suite', () => {
     test('Auth-001: Successful login & logout with standard_user', async ({ page }) => {
         await loginPage.login(authLogin.standard_user, authLogin.password);
 
-        await expect(page).toHaveURL(`${baseUrl}inventory.html`);
+        await inventoryPage.waitForPage();
         await expect(page.getByText('Products')).toBeVisible();
 
         await inventoryPage.clickMenuButton();

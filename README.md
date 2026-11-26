@@ -12,7 +12,8 @@ Test URL: https://www.saucedemo.com/
 ```
 .
 ├── data/                    # Test Data
-├── pages/                   # Page Obejcts
+├── pages/                   # Page Objects
+├── steps/                   # Automation Steps
 └── tests/                   # Automation Test Script
 ```
 
